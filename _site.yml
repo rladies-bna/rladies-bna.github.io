@@ -1,11 +1,11 @@
-name: "Belajar-Bareng-SM"
+name: "rladies-bna"
 output_dir: "."
 navbar:
-  title: "Belajar Bareng SM"
+  title: "rladies-bna"
   left:
-    - text: "Home"
+    - text: "Front Page | Halaman Depan"
       href: index.html
-    - text: "About"
+    - text: "About Us | Tentang Kami"
       href: about.html
-    - text: "Material"
+    - text: "Material | Bahan"
       href: material.html
