@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Salsabila Mahdi" />
+  <title>R-Ladies BNA Pertemuan 002:</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="rlpres002_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="rlpres002_files/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">R-Ladies BNA Pertemuan 002:</h1>
+  <h1 class="subtitle">Mengenal R dan RStudio Part II</h1>
+    <h2 class="author">Salsabila Mahdi</h2>
+    <h3 class="date">29/11/2020</h3>
+</section>
+
+<section><section id="types-of-data" class="title-slide slide level1" data-transition="zoom" data-background="#88398a"><h1>Types of Data</h1></section><section id="intisari" class="slide level2">
+<h2>Intisari</h2>
+</section><section id="im-not-afraid-to-say-hello" class="slide level2">
+<h2>I’m not afraid to say hello!</h2>
+<p><img src="images/sertif002.png" alt="sertif" style="width:300px;"/></p>
+</section><section id="apa-aja-well-is." class="slide level2">
+<h2>Apa aja? Well, is.</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>all &lt;-<span class="st"> </span><span class="kw">ls</span>(<span class="kw">baseenv</span>())</span>
+<span id="cb1-2"><a href="#cb1-2"></a>is &lt;-<span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;^is[.]&quot;</span>, all, <span class="dt">value =</span> T)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>is</span></code></pre></div>
+<pre><code>##  [1] &quot;is.array&quot;                &quot;is.atomic&quot;              
+##  [3] &quot;is.call&quot;                 &quot;is.character&quot;           
+##  [5] &quot;is.complex&quot;              &quot;is.data.frame&quot;          
+##  [7] &quot;is.double&quot;               &quot;is.element&quot;             
+##  [9] &quot;is.environment&quot;          &quot;is.expression&quot;          
+## [11] &quot;is.factor&quot;               &quot;is.finite&quot;              
+## [13] &quot;is.function&quot;             &quot;is.infinite&quot;            
+## [15] &quot;is.integer&quot;              &quot;is.language&quot;            
+## [17] &quot;is.list&quot;                 &quot;is.loaded&quot;              
+## [19] &quot;is.logical&quot;              &quot;is.matrix&quot;              
+## [21] &quot;is.na&quot;                   &quot;is.na.data.frame&quot;       
+## [23] &quot;is.na.numeric_version&quot;   &quot;is.na.POSIXlt&quot;          
+## [25] &quot;is.na&lt;-&quot;                 &quot;is.na&lt;-.default&quot;        
+## [27] &quot;is.na&lt;-.factor&quot;          &quot;is.na&lt;-.numeric_version&quot;
+## [29] &quot;is.name&quot;                 &quot;is.nan&quot;                 
+## [31] &quot;is.null&quot;                 &quot;is.numeric&quot;             
+## [33] &quot;is.numeric.Date&quot;         &quot;is.numeric.difftime&quot;    
+## [35] &quot;is.numeric.POSIXt&quot;       &quot;is.numeric_version&quot;     
+## [37] &quot;is.object&quot;               &quot;is.ordered&quot;             
+## [39] &quot;is.package_version&quot;      &quot;is.pairlist&quot;            
+## [41] &quot;is.primitive&quot;            &quot;is.qr&quot;                  
+## [43] &quot;is.R&quot;                    &quot;is.raw&quot;                 
+## [45] &quot;is.recursive&quot;            &quot;is.single&quot;              
+## [47] &quot;is.symbol&quot;               &quot;is.table&quot;               
+## [49] &quot;is.unsorted&quot;             &quot;is.vector&quot;</code></pre>
+</section><section id="bedakan" class="slide level2">
+<h2>Bedakan:</h2>
+<h3 id="datum">Datum</h3>
+<h3 id="data">Data</h3>
+</section><section id="datum-1" class="slide level2">
+<h2>Datum:</h2>
+<h3 id="character">character</h3>
+<h3 id="numeric">numeric</h3>
+<h3 id="na">NA</h3>
+</section><section id="character-1" class="slide level2">
+<h2>1 character</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>panggilan &lt;-<span class="st"> &quot;B&quot;</span> <span class="co">#menetapkan</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>panggilan</span></code></pre></div>
+<pre><code>## [1] &quot;B&quot;</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">nchar</span>(panggilan)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+</section><section id="more-than-1-character" class="slide level2">
+<h2>More than 1 character</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>nama &lt;-<span class="st"> &quot;Bila&quot;</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>nama</span></code></pre></div>
+<pre><code>## [1] &quot;Bila&quot;</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">nchar</span>(nama)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+</section><section id="more-than-1-character-1" class="slide level2">
+<h2>More than 1 character</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>provinsi &lt;-<span class="st"> &quot;Aceh&quot;</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="co">#provinsi</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>kota &lt;-<span class="st"> &quot;Banda Aceh&quot;</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>kota</span></code></pre></div>
+<pre><code>## [1] &quot;Banda Aceh&quot;</code></pre>
+</section><section id="quiz-1" class="slide level2">
+<h2>Quiz 1</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>sapaan &lt;-<span class="st"> &quot;Assalamu&#39;alaikum Dunia&quot;</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="co">#sapaan #comments</span></span></code></pre></div>
+</section><section id="quiz-1-answer" class="slide level2">
+<h2>Quiz 1: Answer</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>sapaan &lt;-<span class="st"> &quot;Assalamu&#39;alaikum Dunia&quot;</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>sapaan</span></code></pre></div>
+<pre><code>## [1] &quot;Assalamu&#39;alaikum Dunia&quot;</code></pre>
+</section><section id="number" class="slide level2">
+<h2>1 number</h2>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>umur &lt;-<span class="st"> </span><span class="dv">21</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>umur</span></code></pre></div>
+<pre><code>## [1] 21</code></pre>
+</section><section id="quiz-2" class="slide level2">
+<h2>Quiz 2</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>tinggi &lt;-<span class="st"> </span><span class="dv">170</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="co">#tinggi</span></span></code></pre></div>
+</section><section id="quiz-2-answer" class="slide level2">
+<h2>Quiz 2: Answer</h2>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>tinggi &lt;-<span class="st"> </span><span class="dv">170</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>tinggi</span></code></pre></div>
+<pre><code>## [1] 170</code></pre>
+</section><section id="math-with-2-numbers" class="slide level2">
+<h2>Math with 2 numbers</h2>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">4</span></span></code></pre></div>
+<pre><code>## [1] 0.25</code></pre>
+</section><section id="average" class="slide level2">
+<h2>Average</h2>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>umur1  &lt;-<span class="st"> </span><span class="dv">21</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>umur2  &lt;-<span class="st"> </span><span class="dv">22</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a>(umur1 <span class="op">+</span><span class="st"> </span>umur2)<span class="op">/</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 21.5</code></pre>
+</section><section id="quiz-3" class="slide level2">
+<h2>Quiz 3</h2>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>bakso       &lt;-<span class="st"> </span><span class="dv">10000</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>teh.dingin  &lt;-<span class="st">  </span><span class="dv">5000</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="co">#bakso + teh.dingin</span></span></code></pre></div>
+</section><section id="quiz-3-answer" class="slide level2">
+<h2>Quiz 3: Answer</h2>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>bakso       &lt;-<span class="st"> </span><span class="dv">10000</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a>teh.dingin  &lt;-<span class="st">  </span><span class="dv">5000</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a>bakso <span class="op">+</span><span class="st"> </span>teh.dingin</span></code></pre></div>
+<pre><code>## [1] 15000</code></pre>
+</section><section id="more-than-1-number" class="slide level2">
+<h2>More than 1 number</h2>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>berat.badan &lt;-<span class="st"> </span><span class="dv">45</span> <span class="dv">36</span></span></code></pre></div>
+<pre><code>## Error: &lt;text&gt;:1:19: unexpected numeric constant
+## 1: berat.badan &lt;- 45 36
+##                       ^</code></pre>
+</section><section id="na-1" class="slide level2">
+<h2>NA</h2>
+<p>‘Not Available’ / Missing Values</p>
+</section><section id="confuses-r" class="slide level2">
+<h2>Confuses R!</h2>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>tinggi1 &lt;-<span class="st"> </span><span class="dv">170</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a>tinggi2 &lt;-<span class="st"> </span><span class="dv">180</span></span>
+<span id="cb34-3"><a href="#cb34-3"></a>tinggi3 &lt;-<span class="st"> </span><span class="ot">NA</span></span>
+<span id="cb34-4"><a href="#cb34-4"></a><span class="kw">mean</span>(tinggi1, tinggi2, tinggi3)</span></code></pre></div>
+<pre><code>## Error in if (na.rm) x &lt;- x[!is.na(x)]: missing value where TRUE/FALSE needed</code></pre>
+</section><section id="solutions" class="slide level2">
+<h2>Solutions?</h2>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>tinggi1 &lt;-<span class="st"> </span><span class="dv">170</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a>tinggi2 &lt;-<span class="st"> </span><span class="dv">180</span></span>
+<span id="cb36-3"><a href="#cb36-3"></a>tinggi3 &lt;-<span class="st"> </span><span class="ot">NA</span></span>
+<span id="cb36-4"><a href="#cb36-4"></a><span class="kw">mean</span>(tinggi1, tinggi2, tinggi3, <span class="dt">na.rm =</span> T)</span></code></pre></div>
+<pre><code>## [1] 170</code></pre>
+</section><section id="quiz-4" class="slide level2">
+<h2>Quiz 4</h2>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>coklat  &lt;-<span class="st">  </span><span class="dv">8000</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a>es.krim &lt;-<span class="st"> </span><span class="dv">12000</span></span>
+<span id="cb38-3"><a href="#cb38-3"></a>sayur   &lt;-<span class="st">    </span><span class="ot">NA</span></span>
+<span id="cb38-4"><a href="#cb38-4"></a><span class="co">#mean(coklat, es.krim, sayur)</span></span></code></pre></div>
+</section><section id="quiz-4-answer" class="slide level2">
+<h2>Quiz 4: Answer</h2>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>coklat  &lt;-<span class="st">  </span><span class="dv">8000</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a>es.krim &lt;-<span class="st"> </span><span class="dv">12000</span></span>
+<span id="cb39-3"><a href="#cb39-3"></a>sayur   &lt;-<span class="st">    </span><span class="ot">NA</span></span>
+<span id="cb39-4"><a href="#cb39-4"></a><span class="kw">mean</span>(coklat, es.krim, sayur)</span></code></pre></div>
+<pre><code>## Error in if (na.rm) x &lt;- x[!is.na(x)]: missing value where TRUE/FALSE needed</code></pre>
+</section><section id="data-1" class="slide level2">
+<h2>Data:</h2>
+<h3 id="vector">vector</h3>
+<h3 id="data.frame">data.frame</h3>
+<h3 id="list">list</h3>
+</section><section id="vector-1" class="slide level2">
+<h2>vector</h2>
+<p>A row or a column of data</p>
+</section><section id="how-to-make-a-vector" class="slide level2">
+<h2>How to make a vector</h2>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>tinggi &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">170</span>, <span class="dv">180</span>, <span class="dv">150</span>)</span>
+<span id="cb41-2"><a href="#cb41-2"></a>tinggi</span></code></pre></div>
+<pre><code>## [1] 170 180 150</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="kw">length</span>(tinggi)</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+</section><section id="data.frame-1" class="slide level2">
+<h2>data.frame</h2>
+<p>Combined rows/columns of data</p>
+</section><section id="how-to-make-a-data.frame" class="slide level2">
+<h2>How to make a data.frame?</h2>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>tinggi &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">170</span>, <span class="dv">180</span>, <span class="dv">150</span>)</span>
+<span id="cb45-2"><a href="#cb45-2"></a>tinggi</span></code></pre></div>
+<pre><code>## [1] 170 180 150</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>berat  &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="dv">55</span>,  <span class="dv">65</span>,  <span class="dv">50</span>)</span>
+<span id="cb47-2"><a href="#cb47-2"></a>berat</span></code></pre></div>
+<pre><code>## [1] 55 65 50</code></pre>
+</section><section id="how-to-make-a-data.frame-1" class="slide level2">
+<h2>How to make a data.frame?</h2>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="co"># jika setiap baris adalah satu orang</span></span>
+<span id="cb49-2"><a href="#cb49-2"></a>perempuan &lt;-<span class="st"> </span><span class="kw">cbind.data.frame</span>(tinggi, berat)</span>
+<span id="cb49-3"><a href="#cb49-3"></a>perempuan</span></code></pre></div>
+<pre><code>##   tinggi berat
+## 1    170    55
+## 2    180    65
+## 3    150    50</code></pre>
+</section><section id="existing-data" class="slide level2">
+<h2>Existing data</h2>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>women</span></code></pre></div>
+<pre><code>##    height weight
+## 1      58    115
+## 2      59    117
+## 3      60    120
+## 4      61    123
+## 5      62    126
+## 6      63    129
+## 7      64    132
+## 8      65    135
+## 9      66    139
+## 10     67    142
+## 11     68    146
+## 12     69    150
+## 13     70    154
+## 14     71    159
+## 15     72    164</code></pre>
+</section><section id="changing-column-names" class="slide level2">
+<h2>Changing column names</h2>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="kw">colnames</span>(women) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;tinggi&quot;</span>, <span class="st">&quot;berat&quot;</span>)</span>
+<span id="cb53-2"><a href="#cb53-2"></a>women</span></code></pre></div>
+<pre><code>##    tinggi berat
+## 1      58   115
+## 2      59   117
+## 3      60   120
+## 4      61   123
+## 5      62   126
+## 6      63   129
+## 7      64   132
+## 8      65   135
+## 9      66   139
+## 10     67   142
+## 11     68   146
+## 12     69   150
+## 13     70   154
+## 14     71   159
+## 15     72   164</code></pre>
+</section><section id="quiz-5" class="slide level2">
+<h2>Quiz 5</h2>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>col1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb55-2"><a href="#cb55-2"></a>col2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb55-3"><a href="#cb55-3"></a>df &lt;-<span class="st"> </span><span class="kw">cbind.data.frame</span>(col1, col2)</span>
+<span id="cb55-4"><a href="#cb55-4"></a><span class="co">#df #Apa nama kolomnya?</span></span></code></pre></div>
+</section><section id="quiz-5-answer" class="slide level2">
+<h2>Quiz 5: answer</h2>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>col1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb56-2"><a href="#cb56-2"></a>col2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb56-3"><a href="#cb56-3"></a>df &lt;-<span class="st"> </span><span class="kw">cbind.data.frame</span>(col1, col2)</span>
+<span id="cb56-4"><a href="#cb56-4"></a>df</span></code></pre></div>
+<pre><code>##   col1 col2
+## 1    1    1
+## 2    2    2
+## 3    3    3
+## 4    4    4
+## 5    5    5</code></pre>
+</section><section id="list-1" class="slide level2">
+<h2>list</h2>
+<p>A combination of objects</p>
+</section><section id="what-does-it-look-like" class="slide level2">
+<h2>What does it look like?</h2>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>nam &lt;-<span class="st"> &quot;Bila&quot;</span></span>
+<span id="cb58-2"><a href="#cb58-2"></a>nim &lt;-<span class="st"> </span><span class="dv">1708108010035</span></span>
+<span id="cb58-3"><a href="#cb58-3"></a>num &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb58-4"><a href="#cb58-4"></a><span class="kw">list</span>(nam, nim, num, women)</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;Bila&quot;
+## 
+## [[2]]
+## [1] 1.708108e+12
+## 
+## [[3]]
+## [1] 1 2 3 4 5
+## 
+## [[4]]
+##    tinggi berat
+## 1      58   115
+## 2      59   117
+## 3      60   120
+## 4      61   123
+## 5      62   126
+## 6      63   129
+## 7      64   132
+## 8      65   135
+## 9      66   139
+## 10     67   142
+## 11     68   146
+## 12     69   150
+## 13     70   154
+## 14     71   159
+## 15     72   164</code></pre>
+</section></section>
+<section><section id="import-data-in-r" class="title-slide slide level1" data-background="#88398a"><h1>Import data in R</h1></section><section id="the-easy-way" class="slide level2">
+<h2>The easy way</h2>
+<p>Above environment tab, upper right panel <img src="images/easy-import.png" alt="easy-import"/></p>
+</section><section id="want-to-write-your-own-code-to-import-data" class="slide level2">
+<h2>Want to write your own code to import data?</h2>
+<pre><code>##         Hal          Bentuk                     Ket
+## 1 Extension (*.csv? *.dta)        Menentukan fungsi
+## 2      Path           (D:/)             Tempat data
+## 3    Header (header = T/F)              Judul Kolom
+## 4 Separator        (sep = ) Pemisah data tiap baris
+## 5   Decimal        (dec = )                    Koma</code></pre>
+</section><section id="example" class="slide level2">
+<h2>Example</h2>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>miskin &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;D:/SM/Keluarga/data/Persentase Penduduk Miskin Menurut Kabkota di Provinsi Aceh Tahun 20005-2019.csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>)</span>
+<span id="cb61-2"><a href="#cb61-2"></a><span class="kw">head</span>(miskin)</span></code></pre></div>
+<pre><code>##          Kabkot X2005 X2006 X2007 X2008 X2009 X2010 X2011 X2012 X2013 X2014
+## 1      Simeulue 34.09 33.80 32.26 26.45 24.72 23.63 22.96 21.88 20.57 19.92
+## 2  Aceh Singkil 29.20 28.41 28.54 23.27 21.06 19.39 18.93 17.92 18.73 17.77
+## 3  Aceh Selatan 26.98 24.58 24.72 19.40 17.50 15.93 15.52 14.81 13.44 12.79
+## 4 Aceh Tenggara 24.63 23.56 21.60 18.51 16.77 16.79 16.39 15.64 14.39 13.75
+## 5    Aceh Timur 30.02 29.85 28.15 24.05 21.33 18.43 18.01 17.19 16.59 15.88
+## 6   Aceh Tengah 27.68 26.68 24.41 23.36 21.43 20.10 19.58 18.78 17.76 16.99
+##   X2015 X2016 X2017 X2018 X2019
+## 1 20.43 19.93 20.20 19.78 18.99
+## 2 21.72 21.60 22.11 21.25 20.78
+## 3 13.24 13.48 14.07 14.01 13.09
+## 4 14.91 14.46 14.86 14.29 13.43
+## 5 15.85 15.06 15.25 14.49 14.47
+## 6 17.51 16.64 16.84 15.58 15.50</code></pre>
+</section></section>
+<section><section id="index-and-modify-data-in-r" class="title-slide slide level1" data-background="#88398a"><h1>Index and modify data in R</h1></section><section id="quiz-6-whats-the-difference" class="slide level2">
+<h2>Quiz 6: What’s the difference?</h2>
+<h3 id="datum-2">Datum</h3>
+<h3 id="data-2">Data</h3>
+</section><section id="one-example-for-datum" class="slide level2">
+<h2>One example for datum</h2>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>nama &lt;-<span class="st"> &quot;Bila&quot;</span></span>
+<span id="cb63-2"><a href="#cb63-2"></a>nama</span></code></pre></div>
+<pre><code>## [1] &quot;Bila&quot;</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>nama &lt;-<span class="st"> &quot;Salsabila&quot;</span></span>
+<span id="cb65-2"><a href="#cb65-2"></a>nama</span></code></pre></div>
+<pre><code>## [1] &quot;Salsabila&quot;</code></pre>
+</section><section id="data-3" class="slide level2">
+<h2>Data</h2>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>col &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb67-2"><a href="#cb67-2"></a>col</span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>col &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb69-2"><a href="#cb69-2"></a>col</span></code></pre></div>
+<pre><code>## [1] 1 2 4 4 5</code></pre>
+</section><section id="index-system-for-vektor" class="slide level2">
+<h2>Index system for vektor</h2>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a>misalnya &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Ani&quot;</span>,<span class="st">&quot;Ina&quot;</span>,<span class="st">&quot;Nia&quot;</span>)</span>
+<span id="cb71-2"><a href="#cb71-2"></a>misalnya[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;Ani&quot;</code></pre>
+</section><section id="quiz-7" class="slide level2">
+<h2>Quiz 7</h2>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>harta.karun &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;emas&quot;</span>,<span class="st">&quot;berlian&quot;</span>,<span class="st">&quot;cincin&quot;</span>)</span>
+<span id="cb73-2"><a href="#cb73-2"></a><span class="co">#harta.karun[2]</span></span></code></pre></div>
+</section><section id="quiz-7-answer" class="slide level2">
+<h2>Quiz 7: Answer</h2>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a>harta.karun &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;emas&quot;</span>,<span class="st">&quot;berlian&quot;</span>,<span class="st">&quot;batu&quot;</span>)</span>
+<span id="cb74-2"><a href="#cb74-2"></a>harta.karun[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;berlian&quot;</code></pre>
+</section><section id="quiz-8" class="slide level2">
+<h2>Quiz 8</h2>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a>harta.karun &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;emas&quot;</span>,<span class="st">&quot;berlian&quot;</span>,<span class="st">&quot;batu&quot;</span>)</span>
+<span id="cb76-2"><a href="#cb76-2"></a><span class="co">#what is the index you need if you want to give someone a rock?</span></span></code></pre></div>
+</section><section id="quiz-8-1" class="slide level2">
+<h2>Quiz 8:</h2>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a>harta.karun &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;emas&quot;</span>,<span class="st">&quot;berlian&quot;</span>,<span class="st">&quot;batu&quot;</span>)</span>
+<span id="cb77-2"><a href="#cb77-2"></a>harta.karun[<span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;batu&quot;</code></pre>
+</section><section id="modify-vektor-by-index" class="slide level2">
+<h2>Modify vektor by index</h2>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a>misalnya &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Ani&quot;</span>,<span class="st">&quot;Ina&quot;</span>,<span class="st">&quot;Nia&quot;</span>)</span>
+<span id="cb79-2"><a href="#cb79-2"></a>misalnya[<span class="dv">1</span>] &lt;-<span class="st"> &quot;Ian&quot;</span></span>
+<span id="cb79-3"><a href="#cb79-3"></a>misalnya</span></code></pre></div>
+<pre><code>## [1] &quot;Ian&quot; &quot;Ina&quot; &quot;Nia&quot;</code></pre>
+</section><section id="index-system-for-data.frame-rows-columns" class="slide level2">
+<h2>Index system for data.frame: rows, columns</h2>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a>women[<span class="dv">1</span>,]</span></code></pre></div>
+<pre><code>##   tinggi berat
+## 1     58   115</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a>women[,<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>##  [1] 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72</code></pre>
+</section><section id="modify-data.frame-by-index" class="slide level2">
+<h2>Modify data.frame by index</h2>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a>women[<span class="dv">1</span>,] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb85-2"><a href="#cb85-2"></a>women</span></code></pre></div>
+<pre><code>##    tinggi berat
+## 1       2     3
+## 2      59   117
+## 3      60   120
+## 4      61   123
+## 5      62   126
+## 6      63   129
+## 7      64   132
+## 8      65   135
+## 9      66   139
+## 10     67   142
+## 11     68   146
+## 12     69   150
+## 13     70   154
+## 14     71   159
+## 15     72   164</code></pre>
+</section><section id="quiz-9" class="slide level2">
+<h2>Quiz 9</h2>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a>women[<span class="dv">3</span>,] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">63</span>, <span class="dv">130</span>)</span>
+<span id="cb87-2"><a href="#cb87-2"></a><span class="co">#data manakah yang akan terubah?</span></span></code></pre></div>
+</section><section id="quiz-9-answer" class="slide level2">
+<h2>Quiz 9: Answer</h2>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a>women[<span class="dv">3</span>,] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">63</span>, <span class="dv">130</span>)</span>
+<span id="cb88-2"><a href="#cb88-2"></a>women</span></code></pre></div>
+<pre><code>##    tinggi berat
+## 1       2     3
+## 2      59   117
+## 3      63   130
+## 4      61   123
+## 5      62   126
+## 6      63   129
+## 7      64   132
+## 8      65   135
+## 9      66   139
+## 10     67   142
+## 11     68   146
+## 12     69   150
+## 13     70   154
+## 14     71   159
+## 15     72   164</code></pre>
+</section></section>
+<section><section id="functions" class="title-slide slide level1" data-background="#88398a"><h1>Functions</h1></section><section id="what-is-a-function" class="slide level2">
+<h2>What is a function?</h2>
+<p><img src="images/OIP.jpg" alt="function" /></p>
+</section><section id="hello-world" class="slide level2">
+<h2>Hello World</h2>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a>halo &lt;-<span class="st"> &quot;Halo Dunia&quot;</span></span>
+<span id="cb90-2"><a href="#cb90-2"></a><span class="kw">print</span>(<span class="st">&quot;Halo Dunia&quot;</span>) <span class="co"># or Hello World</span></span></code></pre></div>
+<pre><code>## [1] &quot;Halo Dunia&quot;</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a><span class="kw">paste</span>(<span class="st">&quot;Halo&quot;</span>, <span class="st">&quot;Bila&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Halo Bila&quot;</code></pre>
+</section><section id="hello" class="slide level2">
+<h2>Hello <insert name></h2>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a>halo &lt;-<span class="st"> </span><span class="cf">function</span>(nama) {</span>
+<span id="cb94-2"><a href="#cb94-2"></a>  <span class="kw">paste</span>(<span class="st">&quot;Halo&quot;</span>, nama)</span>
+<span id="cb94-3"><a href="#cb94-3"></a>}</span>
+<span id="cb94-4"><a href="#cb94-4"></a></span>
+<span id="cb94-5"><a href="#cb94-5"></a><span class="kw">halo</span>(<span class="st">&quot;Bila&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Halo Bila&quot;</code></pre>
+</section><section id="lets-use-that-function-some-more" class="slide level2">
+<h2>Let’s use that function some more</h2>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1"></a><span class="kw">halo</span>(<span class="st">&quot;Trump&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Halo Trump&quot;</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1"></a><span class="kw">paste</span>(<span class="st">&quot;Bye Trump&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Bye Trump&quot;</code></pre>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1"></a><span class="kw">halo</span>(<span class="st">&quot;Semongko&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Halo Semongko&quot;</code></pre>
+</section><section id="quiz-10" class="slide level2">
+<h2>Quiz 10</h2>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1"></a><span class="co">#halo(hai)</span></span></code></pre></div>
+</section><section id="quiz-10-answer" class="slide level2">
+<h2>Quiz 10: Answer</h2>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1"></a><span class="kw">halo</span>(hai)</span></code></pre></div>
+<pre><code>## Error in paste(&quot;Halo&quot;, nama): object &#39;hai&#39; not found</code></pre>
+</section></section>
+<section><section id="loops" class="title-slide slide level1" data-background="#88398a"><h1>Loops</h1></section><section id="a-loop" class="slide level2">
+<h2>A loop</h2>
+<p><img src="images/loop.jpg" alt="function"  style="width:350px;" /></p>
+</section><section id="fori-in-110" class="slide level2">
+<h2>for(i in 1:10)</h2>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){</span>
+<span id="cb105-2"><a href="#cb105-2"></a>  <span class="kw">print</span>(<span class="dv">1</span>)</span>
+<span id="cb105-3"><a href="#cb105-3"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 1
+## [1] 1
+## [1] 1
+## [1] 1
+## [1] 1
+## [1] 1
+## [1] 1
+## [1] 1
+## [1] 1</code></pre>
+</section></section>
+<section><section id="challenge" class="title-slide slide level1"><h1>Challenge</h1></section><section id="make-a-function-that-takes-a-vector-of-names-cname1-name2-name3-and-outputs-kita-harus-membeli-num-bungkus-nasi-padang-where-num-is-the-number-of-people-we-need-to-buy-food-for" class="slide level2">
+<h2>Make a function that takes a vector of names “c(name1, name2, name3)” and outputs “Kita harus membeli (NUM) bungkus nasi padang” where NUM is the number of people we need to buy food for</h2>
+</section></section>
+    </div>
+  </div>
+
+  <script src="rlpres002_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="rlpres002_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: true,
+        // Opens links in an iframe preview overlay
+        previewLinks: true,
+        // Transition style
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'rlpres002_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+          { src: 'rlpres002_files/reveal.js-3.3.0.1/plugin/search/search.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
